@@ -183,7 +183,7 @@ handle-request: function [
   ][
 
   probe req.request-uri
-  if parse? req.request-uri ["/https://" to end][
+  if find/match req.request-uri "/http" [
     remove req.request-uri
     -- req.request-uri
     base-url: append unspaced copy/part replace split req.request-uri "/" "" "//" 3 "/"
